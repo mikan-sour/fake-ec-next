@@ -3,7 +3,7 @@ import { useSearchContext } from '../../hooks';
 import SearchView, { ISearchViewProps } from './searchView';
 
 
-const SearchController: React.FC<{view:React.ReactNode}> = ({view,children}) =>{
+const SearchController: React.FC<{}> = () =>{
 
     const {state, dispatch } = useSearchContext();
 
