@@ -3,7 +3,7 @@ import Search from '../search';
 
 const Styles:React.CSSProperties = {
     width:'100vw',
-    position: 'fixed',
+    position: 'sticky',
     top:0,
     display:'flex',
     alignItems:'center',

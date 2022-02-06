@@ -1,0 +1,16 @@
+.mainContent{
+    width:100vw;
+    padding: 1rem 2rem;
+    font-size: medium;
+    inline-size: 95vw;
+    overflow-wrap: break-word;
+}
+
+.preContent {
+    overflow-x: auto;
+    white-space: pre-wrap;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    word-wrap: break-word;
+}

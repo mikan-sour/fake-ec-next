@@ -1,7 +1,16 @@
 import React from 'react';
 
-import { default as Searchbar } from './searchController';
+import SearchController from './searchController';
+import SearchView from './searchView';
 
-export default function Search() {
-    return <Searchbar/>
+export default function Searchbar() {
+
+    return (
+        <>
+            <SearchController>
+                <SearchView/>
+            </SearchController>
+        </>
+        
+    )
 }

@@ -1,14 +1,14 @@
-import React, { ChangeEvent, ChangeEventHandler, FC, useRef, useState } from 'react';
+import React, { ChangeEvent, useRef, useState } from 'react';
 import styles from './search.module.css';
 
 import { GoSearch } from "react-icons/go";
 
 export interface ISearchViewProps {
-    handleUpdate:(e:ChangeEvent<HTMLInputElement>)=>void,
-    value:string
+    handleUpdate?:(e:ChangeEvent<HTMLInputElement>)=>void,
+    value?:string
 }
 
-const SearchView:FC<ISearchViewProps> = ({handleUpdate,value}) => {
+const SearchView:React.FC<ISearchViewProps> = ({handleUpdate,value}) => {
 
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [ isEmpty, set ] = useState(false);
@@ -21,12 +21,12 @@ const SearchView:FC<ISearchViewProps> = ({handleUpdate,value}) => {
   }
 
   const handleUpdateWithViewChanges = (event:ChangeEvent<HTMLInputElement>) => {
+    if(!handleUpdate) return;
     const {current} = inputRef
     if(!current) return;
     if(current.value) set(false);
     return handleUpdate(event);
   }
-
   return (
     <article className={styles.search}>
         <input 
@@ -44,4 +44,4 @@ const SearchView:FC<ISearchViewProps> = ({handleUpdate,value}) => {
   );
 }
 
-export default React.memo(SearchView)
+export default SearchView;

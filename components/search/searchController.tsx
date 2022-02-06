@@ -1,13 +1,13 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useCallback } from 'react';
 import { useSearchContext } from '../../hooks';
 import SearchView, { ISearchViewProps } from './searchView';
 
 
-const SearchController: React.FC<{}> = () =>{
+const SearchController: React.FC<{children:React.ReactNode}> = ({children}) =>{
 
     const {state, dispatch } = useSearchContext();
 
-    const handleUpdate = (event:ChangeEvent<HTMLInputElement>) => {
+    const handleUpdate = useCallback((event:ChangeEvent<HTMLInputElement>) => {
         event.preventDefault();
         dispatch(
             {
@@ -17,9 +17,17 @@ const SearchController: React.FC<{}> = () =>{
                 }
             }
         )
-    }
-   
-    return <SearchView handleUpdate={handleUpdate} value={state.value}/>;
+    },[])
+
+    if(!children) return <></>;
+    
+    return (
+        <>
+            {React.cloneElement(children as React.ReactElement,{handleUpdate, value:state.value})}
+        </>
+    )
+
+    // return <SearchView handleUpdate={handleUpdate} value={state.value}/>;
 }
 
-export default SearchController
+export default React.memo(SearchController);

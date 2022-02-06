@@ -12,6 +12,7 @@ const Styles:React.CSSProperties = {
     color:'#999',
     borderTop:'1px solid #999',
     padding: '1rem',
+    backgroundColor:'#FFF',
 }
 
 export default function Footer() {
