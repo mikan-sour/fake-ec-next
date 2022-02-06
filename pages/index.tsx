@@ -29,15 +29,6 @@ const Home: NextPage = () => {
   const [ loading, setLoading ] = React.useState<boolean>(true);
   const countJawn = React.useRef(0);
 
-  const stateOfFour = React.useState(4);
-  const stateOfFive = React.useState(5);
-
-  const nine = useCallback(() => stateOfFour[0] + stateOfFive[0],[stateOfFour[0],stateOfFive[0]]);
-
-  React.useEffect(()=> {
-    console.log('sum is ' + nine() )
-  },[nine])
-
   React.useEffect(()=> {
     let isActive = true;
     if(!loading) setLoading(true);
