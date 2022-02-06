@@ -3,7 +3,6 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { useLoading, useSearchContext } from '../hooks'
 import styles from '../styles/Home.module.css'
-import { useCallback } from 'react'
 
 export interface Rating {
   rate: number;
@@ -89,7 +88,7 @@ const Home: NextPage = () => {
                 apiRes?.map((prod:Product) => (
                   <li key={prod.id} style={liStyle} >
                     <p>{prod.title}</p>
-                    <img style={{width:'4rem',height:'auto', paddingLeft:'1rem'}}src={prod.image}/>
+                    <img style={{width:'4rem',height:'auto', paddingLeft:'1rem'}}src={prod.image} alt=''/>
                   </li>
                 ))
               }

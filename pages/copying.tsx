@@ -12,7 +12,7 @@ export default function Copying() {
   return (
       <main>
           {data.map((food:{name:string,text:string,url:string}) => (
-              <article>
+              <article key={food.name}>
                   <h1>{food.name}</h1>
                   <section>
                       {food.text}
