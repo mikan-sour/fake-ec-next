@@ -7,16 +7,11 @@ export const useSearchContext = () => {
     return useContext(SearchContext)
 }
 
-export const useLoading = (val:boolean) => (Component:React.FC, props?:any) => {
-    // val is the value that will toggle based on whether or not the data is loading
+export const useLoading = (isLoading:boolean) => (Component:React.FC, props?:any) => {
+    // isLoading is the value that will toggle based on whether or not the data is loading
+    useDebugValue(isLoading);useDebugValue(Component)
 
-    useDebugValue(val)
-    useDebugValue(Component)
-    if(val) {
-        return React.cloneElement(<FullPageLoader/>);
-    } else {
-        return React.cloneElement(<Component/>, {...props});
-    }
+    return isLoading ? <FullPageLoader/> : <Component {...props}/> ;
 }
 
 export const useCopyToClipboard = (text:string, notifyTimeout = 2500) => {
