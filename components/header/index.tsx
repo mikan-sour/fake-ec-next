@@ -9,13 +9,14 @@ const Styles:React.CSSProperties = {
     alignItems:'center',
     justifyContent:'center',
     height:'3.5rem',
-    backgroundColor:'purple'
+    backgroundColor:'purple',
+    zIndex:2,
 }
 
 export default function Header() {
   return (
-        <div style={Styles}>
+        <header style={Styles}>
           <Search></Search>
-        </div>
+        </header>
   )
 }
