@@ -68,7 +68,7 @@ const Home: NextPage = () => {
     setCount( count => count - 5);
   }
 
-  return useLoading(loading)(()=>(
+  return useLoading(loading)(()=>
     (
       <div className={styles.container}>
         <Head>
@@ -108,7 +108,7 @@ const Home: NextPage = () => {
       
       </div>
     )
-  ))
+  )
   
 }
 

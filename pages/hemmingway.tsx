@@ -9,7 +9,6 @@ export default function Hemmingway() {
     const [showAll, setShowAll] = useState<boolean>(false);
 
     useEffect(() => {
-        console.log('is setting')
         let isActive = true;
         if(!loading) setLoading(true);
         fetch("./OldManAndTheSea.txt")
@@ -34,20 +33,26 @@ export default function Hemmingway() {
     }, [text]);
 
 
-    const HemComp:React.FC<{textColor?:string}> = ({textColor}) => {
+    const TheOldManAndTheSea:React.FC<{textColor?:string}> = ({textColor}) => {
         const color = textColor ? {color:textColor} : {color:'black'}
         return (
         <main className={styles.mainContent}>
-            <button onClick={()=> setShowAll(!showAll)}>show all</button>
+            <article className={styles.upperContent}>
+                <button className={styles.button} onClick={()=> setShowAll(!showAll)}>{showAll ? "Show some" : "Show all"}</button>
+                <div className={styles.titleText}>
+                    <h1>The Old Man and the Sea</h1>
+                    <h2>By Ernest Hemmingway</h2>
+                </div>
+            </article>
             <pre className={styles.preContent} style={color}>
                 {showAll ? text : truncateText}
             </pre>
         </main>
     )}
 
-    const HemmingwayContent = useLoading(loading)(HemComp,{textColor:'purple'});
+    return useLoading(loading)(TheOldManAndTheSea, { textColor: 'purple' });
     
-    return HemmingwayContent;
+    
 }
 
 

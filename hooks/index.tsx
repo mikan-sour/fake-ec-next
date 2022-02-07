@@ -9,31 +9,11 @@ export const useSearchContext = () => {
 
 export const useLoading = (isLoading:boolean) => (Component:React.FC, props?:any) => {
     // isLoading is the value that will toggle based on whether or not the data is loading
-    useDebugValue(isLoading);useDebugValue(Component)
+    useDebugValue({isLoading,Component,props})
 
     return isLoading ? <FullPageLoader/> : <Component {...props}/> ;
 }
 
-export const useCopyToClipboard = (text:string, notifyTimeout = 2500) => {
-    const [copyStatus, setCopyStatus] = useState('inactive')
-    const copy:React.MouseEventHandler<HTMLButtonElement> = useCallback(() => {
-      navigator.clipboard.writeText(text).then(
-        () => setCopyStatus('copied'),
-        () => setCopyStatus('failed to copy'),
-      )
-    }, [text])
-  
-    useEffect(() => {
-      if (copyStatus === 'inactive') {
-        return
-      }
-  
-      const timeoutId = setTimeout(() => setCopyStatus('inactive'), notifyTimeout)
-  
-      return () => clearTimeout(timeoutId)
-    }, [copyStatus])
-  
-    return [copyStatus, copy]
-  }
+
 
 

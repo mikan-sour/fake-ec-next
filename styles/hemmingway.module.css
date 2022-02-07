@@ -1,3 +1,4 @@
+
 .mainContent{
     width:100vw;
     padding: 1rem 2rem;
@@ -13,4 +14,50 @@
     white-space: -pre-wrap;
     white-space: -o-pre-wrap;
     word-wrap: break-word;
+}
+
+.upperContent {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 3rem;
+    width:100%;
+    position: relative;
+    color: purple;
+}
+
+.titleText {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    
+}
+
+.titleText > h1, .titleText > h2 {
+    margin: 0;
+}
+
+.titleText > h1 {
+    font-size: 2rem;
+    padding-top: 1rem;
+}
+
+.titleText > h2 {
+    padding-bottom: 1.5frem;
+}
+
+.button {
+    position: absolute;
+    top:auto;
+    left: 1rem;
+    width: 7rem;
+    height: 3rem;
+    color:#FFF;
+    background-color: purple;
+    border: none;
+    font-size: medium;
+    font-weight: bold;
+    border-radius: 5px;
 }
