@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { GoChevronDown, GoChevronUp } from 'react-icons/go';
 import IFileSystem from './fse.types';
 import styles from "./fse.module.css";
@@ -25,6 +25,12 @@ const FileSystemExplorer:React.FC<IFileSystem> = (props) => {
       setDisplayChildren(!displayChildren);
     }
 
+    function getDisplayConditions(){
+      return displayChildren && props.childrenFiles && props.childrenFiles.length > 0;
+    }
+
+    const displayConditions = useMemo(()=>getDisplayConditions(),[displayChildren, JSON.stringify(props.childrenFiles)])
+
     return (
       <article 
         className={styles.directory}
@@ -39,7 +45,7 @@ const FileSystemExplorer:React.FC<IFileSystem> = (props) => {
             </span>
           </section>
         
-        {displayChildren && props.childrenFiles && props.childrenFiles.length > 0 && props.childrenFiles.map((file:IFileSystem) => {
+        {displayConditions && props.childrenFiles!.map((file:IFileSystem) => {
           return (
             <FileSystemExplorer {...file} key={file.name}/>
           )}
