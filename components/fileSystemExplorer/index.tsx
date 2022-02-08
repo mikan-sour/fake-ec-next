@@ -32,10 +32,10 @@ const FileSystemExplorer:React.FC<IFileSystem> = (props) => {
     const displayConditions = useMemo(()=>getDisplayConditions(),[displayChildren, JSON.stringify(props.childrenFiles)])
 
     return (
-      <article 
+      <details 
         className={styles.directory}
         style={{border: props.name === "root" || props.isDirectory && displayChildren ? "1px solid #999" : "transparent"}}>
-          <section onClick={()=> handleClick(props.isDirectory)} className={styles.directoryHeader}>
+          <summary onClick={()=> handleClick(props.isDirectory)} className={styles.directoryHeader}>
             <p 
             style={{fontWeight:props.isDirectory ? "800":"300"}}>{props.name}</p>
             <span 
@@ -43,7 +43,7 @@ const FileSystemExplorer:React.FC<IFileSystem> = (props) => {
             {props.isDirectory && !displayChildren && <GoChevronDown />}
             {props.isDirectory && displayChildren && <GoChevronUp />}
             </span>
-          </section>
+          </summary>
         
         {displayConditions && props.childrenFiles!.map((file:IFileSystem) => {
           return (
@@ -51,7 +51,7 @@ const FileSystemExplorer:React.FC<IFileSystem> = (props) => {
           )}
         )}
         
-      </article>
+      </details>
       
     )
 }
